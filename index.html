@@ -284,6 +284,7 @@
         .navbar {
             background-color: var(--navbar-bg) !important;
             transition: background-color 0.3s ease;
+            min-height: 56px; /* Fixed navbar height */
         }
         
         .navbar-brand {
@@ -336,19 +337,24 @@
             transform: rotate(20deg);
         }
         
-        /* Mobile theme toggle positioning */
+        /* Mobile theme toggle positioning - COMPLETELY FIXED */
         .theme-toggle.d-lg-none {
-            position: absolute;
-            right: 80px;
-            top: 50%;
-            transform: translateY(-50%);
+            position: fixed; /* Changed from absolute to fixed */
+            right: 65px; /* Position from right edge of screen */
+            top: 12px; /* Fixed distance from top */
             margin: 0;
             padding: 6px 10px;
-            border: 2px solid var(--border-color);
-            background: none;
-            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: var(--navbar-bg); /* Use navbar background */
+            border-radius: 15px;
             color: var(--text-dark);
-            z-index: 1000;
+            z-index: 1050; /* Higher than navbar */
+            min-width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add subtle shadow */
         }
         
         .theme-toggle.d-lg-none:hover {
@@ -358,6 +364,14 @@
         
         .theme-toggle.d-lg-none .theme-icon {
             font-size: 14px;
+        }
+        
+        /* Ensure navbar toggler doesn't overlap */
+        .navbar-toggler {
+            margin-left: auto;
+            border: none;
+            padding: 4px 8px;
+            z-index: 1049; /* Lower than theme toggle */
         }
         
         .bg-light-custom {
@@ -473,6 +487,23 @@
                 padding: 10px 20px;
                 font-size: 1rem;
             }
+            
+            /* Smaller mobile theme toggle */
+            .theme-toggle.d-lg-none {
+                right: 65px;
+                top: 12px;
+                padding: 4px 8px;
+                min-width: 32px;
+                height: 32px;
+            }
+            
+            .theme-toggle.d-lg-none .theme-icon {
+                font-size: 12px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
         }
         
         /* Tablet Optimization */
@@ -521,14 +552,17 @@
             }
         }
         
-        /* Fix navbar spacing for mobile theme button */
+        /* Fix navbar spacing */
         @media (max-width: 991px) {
-            .navbar-toggler {
-                margin-left: auto;
+            .navbar > .container {
+                position: relative;
+                padding-left: 15px;
+                padding-right: 15px;
             }
             
-            .container {
-                position: relative;
+            /* Add some padding to account for fixed theme toggle */
+            .navbar-nav {
+                padding-right: 60px;
             }
         }
         
@@ -613,7 +647,7 @@
         <div class="container">
             <a class="navbar-brand" href="#home" aria-label="Praveen B - Home">Praveen B</a>
             
-            <!-- Theme toggle button - mobile only (outside collapsible menu) -->
+            <!-- Theme toggle button - mobile only (FIXED POSITION) -->
             <button class="theme-toggle d-lg-none" id="themeToggleMobile" aria-label="Toggle dark mode">
                 <i class="theme-icon fas fa-moon"></i>
             </button>
@@ -624,7 +658,7 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- Theme toggle for desktop - keep original -->
+                    <!-- Theme toggle for desktop -->
                     <li class="nav-item d-none d-lg-block">
                         <button class="theme-toggle nav-link" id="themeToggleDesktop" aria-label="Toggle dark mode">
                             <i class="theme-icon fas fa-moon"></i>
@@ -648,7 +682,6 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
-                        <!-- Fixed profile image path -->
                         <img src="images/profile.jpg.jpeg" alt="Praveen B Profile Picture" class="profile-img" loading="lazy">
                     </div>
                     <div class="col-lg-6 text-center text-lg-start">
