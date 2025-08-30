@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praveen B - Power Platform Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Praveen B - Expert Power Platform Developer specializing in PowerApps, Power Automate, Power BI, and ASP.NET solutions">
+    <meta name="keywords" content="Power Platform, PowerApps, Power Automate, Power BI, Developer, ASP.NET, Microsoft 365, Azure">
+    <meta name="author" content="Praveen B">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Praveen B - Power Platform Developer">
+    <meta property="og:description" content="Innovative Power Platform developer creating efficient business solutions">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Light Mode Colors */
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --text-dark: #333333;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0,0,0,0.1);
+            --navbar-bg: #ffffff;
+            --hero-gradient: linear-gradient(135deg, #2c3e50, #3498db);
+        }
+        
+        [data-theme="dark"] {
+            /* Dark Mode Colors */
+            --primary-color: #4a6fa5;
+            --secondary-color: #5dade2;
+            --accent-color: #e74c3c;
+            --text-light: #adb5bd;
+            --bg-light: #212529;
+            --bg-white: #343a40;
+            --text-dark: #f8f9fa;
+            --border-color: #495057;
+            --shadow-color: rgba(0,0,0,0.3);
+            --navbar-bg: #212529;
+            --hero-gradient: linear-gradient(135deg, #1a252f, #2980b9);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .hero-section {
+            background: var(--hero-gradient);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+        
+        .skill-item {
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+        
+        .progress-bar-custom {
+            height: 8px;
+            border-radius: 10px;
+            background: var(--border-color);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 10px;
+            transition: width 2s ease;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--secondary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: var(--bg-white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--border-color);
+        }
+        
+        .project-card {
+            background: var(--bg-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: var(--hero-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .contact-form {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+        
+        .form-control {
+            background-color: var(--bg-white);
+            border-color: var(--border-color);
+            color: var(--text-dark);
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            background-color: var(--bg-white);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+            color: var(--text-dark);
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: white;
+        }
+        
+        .navbar {
+            background-color: var(--navbar-bg) !important;
+            transition: background-color 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-dark) !important;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            position: relative;
+            color: var(--text-dark) !important;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--secondary-color) !important;
+        }
+        
+        /* Theme Toggle Button - Updated positioning */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 15px;
+        }
+        
+        .theme-toggle:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        
+        .theme-toggle .theme-icon {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .theme-toggle:hover .theme-icon {
+            transform: rotate(20deg);
+        }
+        
+        .bg-light-custom {
+            background-color: var(--bg-light) !important;
+            transition: background-color 0.3s ease;
+        }
+        
+        .text-muted {
+            color: var(--text-light) !important;
+        }
+        
+        .social-links a {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: var(--secondary-color) !important;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Badge colors for dark mode */
+        .badge.bg-primary {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .badge.bg-secondary {
+            background-color: var(--text-light) !important;
+        }
+        
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 40px 0;
+                min-height: 70vh;
+            }
+            
+            .display-4 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            .lead {
+                font-size: 1rem;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .project-card {
+                margin-bottom: 20px;
+            }
+            
+            .skill-item {
+                padding: 15px;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+            
+            .timeline {
+                padding-left: 20px;
+            }
+            
+            .timeline::before {
+                left: 10px;
+            }
+            
+            .timeline-item::before {
+                left: -27px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .project-image {
+                height: 150px;
+                font-size: 2rem;
+            }
+            
+            .btn-lg {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            
+            .theme-toggle {
+                margin-right: 10px;
+                padding: 6px 10px;
+            }
+        }
+        
+        /* Tablet Optimization */
+        @media (min-width: 577px) and (max-width: 991px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .profile-img {
+                width: 170px;
+                height: 170px;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Medium screens */
+        @media (max-width: 768px) {
+            .hero-section {
+                text-align: center;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .theme-toggle {
+                margin: 10px auto 0;
+            }
+        }
+        
+        /* Large Screen Optimization */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .navbar, .btn, footer, .social-links, .theme-toggle {
+                display: none !important;
+            }
+            
+            .hero-section {
+                background: white !important;
+                color: black !important;
+                padding: 20px 0 !important;
+            }
+            
+            body {
+                font-size: 12px;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus improvements */
+        .btn:focus,
+        .nav-link:focus,
+        .form-control:focus,
+        .theme-toggle:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+        
+        /* Dark mode specific adjustments */
+        [data-theme="dark"] .navbar-toggler {
+            border-color: var(--border-color);
+        }
+        
+        [data-theme="dark"] .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248, 249, 250, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        [data-theme="dark"] .timeline-item::before {
+            border-color: var(--bg-white);
+        }
+    </style>
+</head>
+<body class="loading">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#home" aria-label="Praveen B - Home">Praveen B</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="theme-toggle nav-link" id="themeToggle" aria-label="Toggle dark mode">
+                            <i class="theme-icon fas fa-moon"></i>
+                            <span class="theme-text d-none d-sm-inline">Dark Mode</span>
+                        </button>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
+                        <!-- Updated profile image to use local file -->
+                        <img src="Images/profile.jpg.jpeg" alt="Praveen B Profile Picture" class="profile-img" loading="lazy">
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <h1 class="display-4 mb-3">Praveen B</h1>
+                        <h2 class="mb-4">Power Platform Developer</h2>
+                        <p class="lead mb-4">Innovative Power Platform developer specializing in creating efficient business solutions using PowerApps, Power Automate, Power BI, and ASP.NET technologies to streamline organizational workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-title">About Me</h2>
+                        <p class="lead">I'm a dedicated Power Platform developer who loves transforming business processes through innovative low-code/no-code solutions. My expertise spans across PowerApps, Power Automate, Power BI, and ASP.NET development to create comprehensive business automation solutions.</p>
+                        <div class="row mt-5">
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center fade-in">
+                                    <i class="fas fa-cogs fa-3x text-primary mb-3" aria-hidden="true"></i>
+                                    <h5>Process Automation</h5>
+                                    <p>Building efficient workflows using Power Automate to streamline business operations.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center fade-in">
+                                    <i class="fas fa-chart-bar fa-3x text-primary mb-3" aria-hidden="true"></i>
+                                    <h5>Data Analytics</h5>
+                                    <p>Creating insightful Power BI dashboards for data-driven decision making.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center fade-in">
+                                    <i class="fas fa-mobile-alt fa-3x text-primary mb-3" aria-hidden="true"></i>
+                                    <h5>Custom Apps</h5>
+                                    <p>Developing PowerApps solutions that work seamlessly across all platforms.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-5 bg-light-custom">
+            <div class="container">
+                <h2 class="section-title text-center">Professional Experience</h2>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="timeline">
+                            <div class="timeline-item fade-in">
+                                <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap">
+                                    <div>
+                                        <h5 class="mb-1">Senior Power Platform Developer</h5>
+                                        <h6 class="text-muted">Microsoft Solutions Partner</h6>
+                                    </div>
+                                    <span class="badge bg-primary mt-2 mt-md-0">2022 - Present</span>
+                                </div>
+                                <p>Leading Power Platform implementations for enterprise clients, developing complex PowerApps solutions, and creating automated workflows that improved business efficiency by 60%.</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2 mb-1">PowerApps</span>
+                                    <span class="badge bg-secondary me-2 mb-1">Power Automate</span>
+                                    <span class="badge bg-secondary me-2 mb-1">Power BI</span>
+                                    <span class="badge bg-secondary mb-1">Dataverse</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item fade-in">
+                                <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap">
+                                    <div>
+                                        <h5 class="mb-1">Power Platform Developer</h5>
+                                        <h6 class="text-muted">Digital Transformation Co.</h6>
+                                    </div>
+                                    <span class="badge bg-primary mt-2 mt-md-0">2020 - 2022</span>
+                                </div>
+                                <p>Developed custom business applications using PowerApps, implemented Power Automate flows for various departments, and created comprehensive Power BI reports for executive dashboards.</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2 mb-1">Canvas Apps</span>
+                                    <span class="badge bg-secondary me-2 mb-1">Model-driven Apps</span>
+                                    <span class="badge bg-secondary me-2 mb-1">SharePoint Integration</span>
+                                    <span class="badge bg-secondary mb-1">Power Virtual Agents</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item fade-in">
+                                <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap">
+                                    <div>
+                                        <h5 class="mb-1">Junior .NET Developer</h5>
+                                        <h6 class="text-muted">TechStart Solutions</h6>
+                                    </div>
+                                    <span class="badge bg-primary mt-2 mt-md-0">2018 - 2020</span>
+                                </div>
+                                <p>Started career in .NET development while transitioning to Power Platform technologies, built foundational skills in C#, ASP.NET, and Microsoft ecosystem technologies.</p>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2 mb-1">ASP.NET</span>
+                                    <span class="badge bg-secondary me-2 mb-1">C#</span>
+                                    <span class="badge bg-secondary me-2 mb-1">SQL Server</span>
+                                    <span class="badge bg-secondary mb-1">Azure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center">Technical Skills</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">PowerApps (Canvas & Model-driven)</span>
+                                <span class="text-muted">95%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="PowerApps skill level 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Power Automate</span>
+                                <span class="text-muted">92%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 92%" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Power Automate skill level 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Power BI & Data Analytics</span>
+                                <span class="text-muted">88%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 88%" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Power BI skill level 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Dataverse & SharePoint</span>
+                                <span class="text-muted">85%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Dataverse & SharePoint skill level 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">ASP.NET / C# Programming</span>
+                                <span class="text-muted">82%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 82%" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="ASP.NET / C# skill level 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="skill-item fade-in">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-bold">Azure & Microsoft 365</span>
+                                <span class="text-muted">80%</span>
+                            </div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Azure & Microsoft 365 skill level 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-5 bg-light-custom">
+            <div class="container">
+                <h2 class="section-title text-center">Featured Projects</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card fade-in">
+                            <div class="project-image" role="img" aria-label="HR Management System Project">
+                                <i class="fas fa-tasks" aria-hidden="true"></i>
+                            </div>
+                            <div class="p-4">
+                                <h5 class="mb-3">HR Management System</h5>
+                                <p class="text-muted mb-3">Comprehensive HR solution built with PowerApps for employee management, automated approval workflows using Power Automate, and analytics dashboard with Power BI.</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-2 mb-1">PowerApps</span>
+                                    <span class="badge bg-primary me-2 mb-1">Power Automate</span>
+                                    <span class="badge bg-primary mb-1">Power BI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card fade-in">
+                            <div class="project-image" role="img" aria-label="Sales Analytics Portal Project">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            </div>
+                            <div class="p-4">
+                                <h5 class="mb-3">Sales Analytics Portal</h5>
+                                <p class="text-muted mb-3">Real-time sales dashboard with Power BI, automated data refresh from multiple sources, and PowerApps interface for field sales team data entry.</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-2 mb-1">Power BI</span>
+                                    <span class="badge bg-primary me-2 mb-1">Dataverse</span>
+                                    <span class="badge bg-primary mb-1">Power Query</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card fade-in">
+                            <div class="project-image" role="img" aria-label="Workflow Automation Suite Project">
+                                <i class="fas fa-robot" aria-hidden="true"></i>
+                            </div>
+                            <div class="p-4">
+                                <h5 class="mb-3">Workflow Automation Suite</h5>
+                                <p class="text-muted mb-3">End-to-end automation solution using Power Automate for document approval, email notifications, and integration with SharePoint and Teams.</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-2 mb-1">Power Automate</span>
+                                    <span class="badge bg-primary me-2 mb-1">SharePoint</span>
+                                    <span class="badge bg-primary mb-1">Teams Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center">Get In Touch</h2>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="contact-form fade-in">
+                            <form id="contactForm" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="name" required aria-describedby="nameError">
+                                        <div class="invalid-feedback" id="nameError">Please provide your full name.</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" required aria-describedby="emailError">
+                                        <div class="invalid-feedback" id="emailError">Please provide a valid email address.</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject *</label>
+                                    <input type="text" class="form-control" id="subject" required aria-describedby="subjectError">
+                                    <div class="invalid-feedback" id="subjectError">Please provide a subject.</div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea class="form-control" id="message" rows="5" required aria-describedby="messageError"></textarea>
+                                    <div class="invalid-feedback" id="messageError">Please provide your message.</div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary-custom btn-lg">
+                                        <span class="btn-text">Send Message</span>
+                                        <span class="btn-loading d-none">
+                                            <i class="fas fa-spinner fa-spin me-2"></i>Sending...
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="row mt-5 text-center">
+                            <div class="col-md-4 mb-3">
+                                <div class="fade-in">
+                                    <i class="fas fa-envelope fa-2x text-primary mb-2" aria-hidden="true"></i>
+                                    <h6>Email</h6>
+                                    <p class="text-muted">
+                                        <a href="mailto:praveenbalraj96@gmail.com" class="text-decoration-none text-muted">praveenbalraj96@gmail.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="fade-in">
+                                    <i class="fas fa-phone fa-2x text-primary mb-2" aria-hidden="true"></i>
+                                    <h6>Phone</h6>
+                                    <p class="text-muted">
+                                        <a href="tel:+918122159917" class="text-decoration-none text-muted">+91 81221 59917</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="fade-in">
+                                    <i class="fas fa-map-marker-alt fa-2x text-primary mb-2" aria-hidden="true"></i>
+                                    <h6>Location</h6>
+                                    <p class="text-muted">Kumbakonam, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4" role="contentinfo">
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://linkedin.com/in/praveen-b" class="text-white me-3" aria-label="LinkedIn Profile" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/praveen-b" class="text-white me-3" aria-label="GitHub Profile" target="_blank" rel="noopener">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="https://twitter.com/praveen_b" class="text-white me-3" aria-label="Twitter Profile" target="_blank" rel="noopener">
+                    <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/praveen-b" class="text-white" aria-label="Stack Overflow Profile" target="_blank" rel="noopener">
+                    <i class="fab fa-stack-overflow fa-2x" aria-hidden="true"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Praveen B. All rights reserved. Built with love and code.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Theme Management
+        class ThemeManager {
+            constructor() {
+                this.theme = localStorage.getItem('theme') || 'light';
+                this.init();
+            }
+            
+            init() {
+                this.applyTheme(this.theme);
+                this.setupEventListeners();
+                this.updateThemeButton();
+            }
+            
+            setupEventListeners() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', () => this.toggleTheme());
+                }
+            }
+            
+            toggleTheme() {
+                this.theme = this.theme === 'light' ? 'dark' : 'light';
+                this.applyTheme(this.theme);
+                this.updateThemeButton();
+                localStorage.setItem('theme', this.theme);
+            }
+            
+            applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+            
+            updateThemeButton() {
+                const themeIcon = document.querySelector('#themeToggle .theme-icon');
+                const themeText = document.querySelector('#themeToggle .theme-text');
+                
+                if (this.theme === 'dark') {
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    }
+                    if (themeText) {
+                        themeText.textContent = 'Light Mode';
+                    }
+                } else {
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                    if (themeText) {
+                        themeText.textContent = 'Dark Mode';
+                    }
+                }
+            }
+        }
+        
+        // Initialize theme manager
+        let themeManager;
+        
+        // Page loading animation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.remove('loading');
+            themeManager = new ThemeManager();
+            initializeAnimations();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const toggleButton = document.querySelector('.navbar-toggler');
+                        toggleButton.click();
+                    }
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+            
+            // Hide/show navbar on scroll for mobile
+            if (window.innerWidth <= 768) {
+                if (currentScroll > lastScrollTop && currentScroll > 200) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
+        // Intersection Observer for fade-in animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Animate progress bars when in view
+            animateProgressBars();
+        }
+
+        // Animate progress bars when in view
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.style.width;
+                        entry.target.style.width = '0%';
+                        setTimeout(() => {
+                            entry.target.style.width = width;
+                        }, 200);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            progressBars.forEach(bar => observer.observe(bar));
+        }
+
+        // Enhanced contact form handling with validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Remove previous validation states
+            this.classList.remove('was-validated');
+            
+            // Get form elements
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            // Validate form
+            let isValid = true;
+            
+            // Name validation
+            if (!name.value.trim()) {
+                name.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                name.classList.remove('is-invalid');
+                name.classList.add('is-valid');
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value)) {
+                email.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                email.classList.remove('is-invalid');
+                email.classList.add('is-valid');
+            }
+            
+            // Subject validation
+            if (!subject.value.trim()) {
+                subject.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                subject.classList.remove('is-invalid');
+                subject.classList.add('is-valid');
+            }
+            
+            // Message validation
+            if (!message.value.trim() || message.value.trim().length < 10) {
+                message.classList.add('is-invalid');
+                message.nextElementSibling.textContent = 'Please provide a message (at least 10 characters).';
+                isValid = false;
+            } else {
+                message.classList.remove('is-invalid');
+                message.classList.add('is-valid');
+            }
+            
+            if (isValid) {
+                // Show loading state
+                submitBtn.disabled = true;
+                btnText.classList.add('d-none');
+                btnLoading.classList.remove('d-none');
+                
+                // Get form data
+                const formData = {
+                    name: name.value.trim(),
+                    email: email.value.trim(),
+                    subject: subject.value.trim(),
+                    message: message.value.trim(),
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Simulate form submission (replace with actual implementation)
+                setTimeout(() => {
+                    console.log('Contact form data:', formData);
+                    
+                    // Reset loading state
+                    submitBtn.disabled = false;
+                    btnText.classList.remove('d-none');
+                    btnLoading.classList.add('d-none');
+                    
+                    // Show success message
+                    showAlert('Thank you for your message! I will get back to you soon.', 'success');
+                    
+                    // Reset form
+                    this.reset();
+                    this.querySelectorAll('.is-valid').forEach(el => el.classList.remove('is-valid'));
+                }, 2000);
+            }
+        });
+
+        // Alert function
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; max-width: 400px;';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(alertDiv);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 5000);
+        }
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') && link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Keyboard navigation improvements
+        document.addEventListener('keydown', function(e) {
+            // Close mobile menu on Escape
+            if (e.key === 'Escape') {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    const toggleButton = document.querySelector('.navbar-toggler');
+                    toggleButton.click();
+                }
+            }
+            
+            // Toggle theme with Ctrl+Shift+D
+            if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+                e.preventDefault();
+                themeManager.toggleTheme();
+            }
+        });
+    </script>
+</body>
+</html>
