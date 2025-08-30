@@ -273,19 +273,19 @@
             color: var(--secondary-color) !important;
         }
         
-        /* Theme Toggle Button */
+        /* Theme Toggle Button - Updated positioning */
         .theme-toggle {
             background: none;
             border: 2px solid var(--border-color);
             border-radius: 50px;
             padding: 8px 12px;
-            margin-left: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             color: var(--text-dark);
             display: flex;
             align-items: center;
             gap: 5px;
+            margin-right: 15px;
         }
         
         .theme-toggle:hover {
@@ -404,7 +404,7 @@
             }
             
             .theme-toggle {
-                margin-left: 5px;
+                margin-right: 10px;
                 padding: 6px 10px;
             }
         }
@@ -525,28 +525,23 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation">
         <div class="container">
             <a class="navbar-brand" href="#home" aria-label="Praveen B - Home">Praveen B</a>
-            <div class="d-flex align-items-center">
-                <button class="theme-toggle d-none d-lg-flex" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="theme-icon fas fa-moon"></i>
-                </button>
-                <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="theme-toggle nav-link" id="themeToggle" aria-label="Toggle dark mode">
+                            <i class="theme-icon fas fa-moon"></i>
+                            <span class="theme-text d-none d-sm-inline">Dark Mode</span>
+                        </button>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item d-lg-none mt-2">
-                        <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark mode">
-                            <i class="theme-icon fas fa-moon me-1"></i>
-                            <span class="theme-text">Dark Mode</span>
-                        </button>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -558,7 +553,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='%23ffffff' opacity='0.2'/%3E%3Ccircle cx='100' cy='80' r='30' fill='%23ffffff' opacity='0.5'/%3E%3Cpath d='M70 130 Q100 120 130 130 Q130 160 100 160 Q70 160 70 130' fill='%23ffffff' opacity='0.5'/%3E%3C/svg%3E" alt="Praveen B Profile Picture" class="profile-img" loading="lazy">
+                        <!-- Updated profile image to use local file -->
+                        <img src="Images/profile.jpg.jpeg" alt="Praveen B Profile Picture" class="profile-img" loading="lazy">
                     </div>
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-4 mb-3">Praveen B</h1>
@@ -915,26 +911,20 @@
             init() {
                 this.applyTheme(this.theme);
                 this.setupEventListeners();
-                this.updateThemeButtons();
+                this.updateThemeButton();
             }
             
             setupEventListeners() {
-                const desktopToggle = document.getElementById('themeToggle');
-                const mobileToggle = document.getElementById('themeToggleMobile');
-                
-                if (desktopToggle) {
-                    desktopToggle.addEventListener('click', () => this.toggleTheme());
-                }
-                
-                if (mobileToggle) {
-                    mobileToggle.addEventListener('click', () => this.toggleTheme());
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', () => this.toggleTheme());
                 }
             }
             
             toggleTheme() {
                 this.theme = this.theme === 'light' ? 'dark' : 'light';
                 this.applyTheme(this.theme);
-                this.updateThemeButtons();
+                this.updateThemeButton();
                 localStorage.setItem('theme', this.theme);
             }
             
@@ -942,34 +932,25 @@
                 document.documentElement.setAttribute('data-theme', theme);
             }
             
-            updateThemeButtons() {
-                const desktopIcon = document.querySelector('#themeToggle .theme-icon');
-                const mobileIcon = document.querySelector('#themeToggleMobile .theme-icon');
-                const mobileText = document.querySelector('#themeToggleMobile .theme-text');
+            updateThemeButton() {
+                const themeIcon = document.querySelector('#themeToggle .theme-icon');
+                const themeText = document.querySelector('#themeToggle .theme-text');
                 
                 if (this.theme === 'dark') {
-                    if (desktopIcon) {
-                        desktopIcon.classList.remove('fa-moon');
-                        desktopIcon.classList.add('fa-sun');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
                     }
-                    if (mobileIcon) {
-                        mobileIcon.classList.remove('fa-moon');
-                        mobileIcon.classList.add('fa-sun');
-                    }
-                    if (mobileText) {
-                        mobileText.textContent = 'Light Mode';
+                    if (themeText) {
+                        themeText.textContent = 'Light Mode';
                     }
                 } else {
-                    if (desktopIcon) {
-                        desktopIcon.classList.remove('fa-sun');
-                        desktopIcon.classList.add('fa-moon');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
                     }
-                    if (mobileIcon) {
-                        mobileIcon.classList.remove('fa-sun');
-                        mobileIcon.classList.add('fa-moon');
-                    }
-                    if (mobileText) {
-                        mobileText.textContent = 'Dark Mode';
+                    if (themeText) {
+                        themeText.textContent = 'Dark Mode';
                     }
                 }
             }
@@ -1200,7 +1181,7 @@
             
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
+                if (link.getAttribute('href') && link.getAttribute('href').includes(current)) {
                     link.classList.add('active');
                 }
             });
@@ -1223,37 +1204,6 @@
                 themeManager.toggleTheme();
             }
         });
-
-        // Performance optimization: Lazy load images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('loading');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-
-        // Service Worker registration for PWA capabilities (optional)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(function(registration) {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(function(registrationError) {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
     </script>
 </body>
 </html>
