@@ -119,16 +119,48 @@
         
         .skill-item {
             background: var(--bg-light);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
             border: 1px solid var(--border-color);
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .skill-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--shadow-color);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+        
+        /* Staggered animation delays for 3-column layout */
+        .skill-item:nth-child(1) { transition-delay: 0.1s; }
+        .skill-item:nth-child(2) { transition-delay: 0.2s; }
+        .skill-item:nth-child(3) { transition-delay: 0.3s; }
+        .skill-item:nth-child(4) { transition-delay: 0.4s; }
+        .skill-item:nth-child(5) { transition-delay: 0.5s; }
+        .skill-item:nth-child(6) { transition-delay: 0.6s; }
+        .skill-item:nth-child(7) { transition-delay: 0.7s; }
+        .skill-item:nth-child(8) { transition-delay: 0.8s; }
+        .skill-item:nth-child(9) { transition-delay: 0.9s; }
+        
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .skill-percentage {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
         }
         
         .progress-bar-custom {
@@ -136,6 +168,7 @@
             border-radius: 10px;
             background: var(--border-color);
             overflow: hidden;
+            margin-top: 10px;
         }
         
         .progress-fill {
@@ -273,7 +306,7 @@
             color: var(--secondary-color) !important;
         }
         
-        /* Theme Toggle Button - Updated positioning */
+        /* Theme Toggle Button - Desktop */
         .theme-toggle {
             background: none;
             border: 2px solid var(--border-color);
@@ -301,6 +334,30 @@
         
         .theme-toggle:hover .theme-icon {
             transform: rotate(20deg);
+        }
+        
+        /* Mobile theme toggle positioning */
+        .theme-toggle.d-lg-none {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0;
+            padding: 6px 10px;
+            border: 2px solid var(--border-color);
+            background: none;
+            border-radius: 20px;
+            color: var(--text-dark);
+            z-index: 1000;
+        }
+        
+        .theme-toggle.d-lg-none:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .theme-toggle.d-lg-none .theme-icon {
+            font-size: 14px;
         }
         
         .bg-light-custom {
@@ -344,7 +401,7 @@
         /* Enhanced Mobile Responsiveness */
         @media (max-width: 576px) {
             .hero-section {
-                padding: 40px 0;
+                padding: 60px 0 40px;
                 min-height: 70vh;
             }
             
@@ -361,8 +418,21 @@
             }
             
             .profile-img {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
+                margin-bottom: 20px;
+            }
+            
+            /* Ensure the container has proper spacing */
+            .hero-section .container {
+                padding-top: 20px;
+            }
+            
+            /* Make sure the profile image container is centered */
+            .hero-section .col-lg-6:first-child {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             
             .project-card {
@@ -370,7 +440,8 @@
             }
             
             .skill-item {
-                padding: 15px;
+                padding: 20px;
+                margin-bottom: 20px;
             }
             
             .contact-form {
@@ -402,11 +473,6 @@
                 padding: 10px 20px;
                 font-size: 1rem;
             }
-            
-            .theme-toggle {
-                margin-right: 10px;
-                padding: 6px 10px;
-            }
         }
         
         /* Tablet Optimization */
@@ -416,8 +482,8 @@
             }
             
             .profile-img {
-                width: 170px;
-                height: 170px;
+                width: 180px;
+                height: 180px;
             }
             
             .display-4 {
@@ -425,7 +491,7 @@
             }
         }
         
-        /* Medium screens */
+        /* Medium screens - 2 columns for tablets */
         @media (max-width: 768px) {
             .hero-section {
                 text-align: center;
@@ -440,8 +506,29 @@
                 text-align: center;
             }
             
-            .theme-toggle {
-                margin: 10px auto 0;
+            /* Make skills 2 columns on tablet */
+            .skill-col-lg-4 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        
+        /* Mobile - single column */
+        @media (max-width: 576px) {
+            .skill-col-lg-4 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        
+        /* Fix navbar spacing for mobile theme button */
+        @media (max-width: 991px) {
+            .navbar-toggler {
+                margin-left: auto;
+            }
+            
+            .container {
+                position: relative;
             }
         }
         
@@ -525,13 +612,21 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation">
         <div class="container">
             <a class="navbar-brand" href="#home" aria-label="Praveen B - Home">Praveen B</a>
+            
+            <!-- Theme toggle button - mobile only (outside collapsible menu) -->
+            <button class="theme-toggle d-lg-none" id="themeToggleMobile" aria-label="Toggle dark mode">
+                <i class="theme-icon fas fa-moon"></i>
+            </button>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <button class="theme-toggle nav-link" id="themeToggle" aria-label="Toggle dark mode">
+                    <!-- Theme toggle for desktop - keep original -->
+                    <li class="nav-item d-none d-lg-block">
+                        <button class="theme-toggle nav-link" id="themeToggleDesktop" aria-label="Toggle dark mode">
                             <i class="theme-icon fas fa-moon"></i>
                             <span class="theme-text d-none d-sm-inline">Dark Mode</span>
                         </button>
@@ -553,8 +648,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
-                        <!-- Updated profile image to use local file -->
-                        <img src="Images/profile.jpg.jpeg" alt="Praveen B Profile Picture" class="profile-img" loading="lazy">
+                        <!-- Fixed profile image path -->
+                        <img src="images/profile.jpg.jpeg" alt="Praveen B Profile Picture" class="profile-img" loading="lazy">
                     </div>
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-4 mb-3">Praveen B</h1>
@@ -663,77 +758,98 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills Section - Three Column Layout -->
         <section id="skills" class="py-5">
             <div class="container">
                 <h2 class="section-title text-center">Technical Skills</h2>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-bold">PowerApps (Canvas & Model-driven)</span>
-                                <span class="text-muted">95%</span>
-                            </div>
+                    <!-- Row 1 -->
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">PowerApps (Canvas & Model-driven)</div>
+                            <div class="skill-percentage">95%</div>
                             <div class="progress-bar-custom">
                                 <div class="progress-fill" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="PowerApps skill level 95%"></div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-bold">Power Automate</span>
-                                <span class="text-muted">92%</span>
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">Microsoft Excel & VBA Script</div>
+                            <div class="skill-percentage">95%</div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Microsoft Excel & VBA Script skill level 95%"></div>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">Power BI & Microsoft Fabric</div>
+                            <div class="skill-percentage">95%</div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Power BI & Microsoft Fabric skill level 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">Power Automate</div>
+                            <div class="skill-percentage">92%</div>
                             <div class="progress-bar-custom">
                                 <div class="progress-fill" style="width: 92%" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Power Automate skill level 92%"></div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-bold">Power BI & Data Analytics</span>
-                                <span class="text-muted">88%</span>
-                            </div>
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">Power Automate Cloud Flows</div>
+                            <div class="skill-percentage">90%</div>
                             <div class="progress-bar-custom">
-                                <div class="progress-fill" style="width: 88%" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Power BI skill level 88%"></div>
+                                <div class="progress-fill" style="width: 90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Power Automate Cloud Flows skill level 90%"></div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-bold">Dataverse & SharePoint</span>
-                                <span class="text-muted">85%</span>
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">N8N AI Workflows & AI Integration</div>
+                            <div class="skill-percentage">85%</div>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="N8N AI Workflows & AI Integration skill level 85%"></div>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 3 -->
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">Dataverse & SharePoint</div>
+                            <div class="skill-percentage">85%</div>
                             <div class="progress-bar-custom">
                                 <div class="progress-fill" style="width: 85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Dataverse & SharePoint skill level 85%"></div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-bold">ASP.NET / C# Programming</span>
-                                <span class="text-muted">82%</span>
-                            </div>
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">ASP.NET / C# Programming</div>
+                            <div class="skill-percentage">82%</div>
                             <div class="progress-bar-custom">
                                 <div class="progress-fill" style="width: 82%" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="ASP.NET / C# skill level 82%"></div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6">
-                        <div class="skill-item fade-in">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-bold">Azure & Microsoft 365</span>
-                                <span class="text-muted">80%</span>
-                            </div>
+                    <div class="col-lg-4 col-md-6 mb-4 skill-col-lg-4">
+                        <div class="skill-item text-center">
+                            <div class="skill-name">Azure & Microsoft 365</div>
+                            <div class="skill-percentage">80%</div>
                             <div class="progress-bar-custom">
                                 <div class="progress-fill" style="width: 80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Azure & Microsoft 365 skill level 80%"></div>
                             </div>
@@ -901,7 +1017,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Theme Management
+        // Updated Theme Management
         class ThemeManager {
             constructor() {
                 this.theme = localStorage.getItem('theme') || 'light';
@@ -915,9 +1031,16 @@
             }
             
             setupEventListeners() {
-                const themeToggle = document.getElementById('themeToggle');
-                if (themeToggle) {
-                    themeToggle.addEventListener('click', () => this.toggleTheme());
+                // Handle both desktop and mobile theme toggles
+                const themeToggleDesktop = document.getElementById('themeToggleDesktop');
+                const themeToggleMobile = document.getElementById('themeToggleMobile');
+                
+                if (themeToggleDesktop) {
+                    themeToggleDesktop.addEventListener('click', () => this.toggleTheme());
+                }
+                
+                if (themeToggleMobile) {
+                    themeToggleMobile.addEventListener('click', () => this.toggleTheme());
                 }
             }
             
@@ -933,26 +1056,27 @@
             }
             
             updateThemeButton() {
-                const themeIcon = document.querySelector('#themeToggle .theme-icon');
-                const themeText = document.querySelector('#themeToggle .theme-text');
+                // Update both desktop and mobile theme buttons
+                const themeIcons = document.querySelectorAll('.theme-icon');
+                const themeTexts = document.querySelectorAll('.theme-text');
                 
-                if (this.theme === 'dark') {
-                    if (themeIcon) {
-                        themeIcon.classList.remove('fa-moon');
-                        themeIcon.classList.add('fa-sun');
+                themeIcons.forEach(icon => {
+                    if (this.theme === 'dark') {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
                     }
-                    if (themeText) {
-                        themeText.textContent = 'Light Mode';
+                });
+                
+                themeTexts.forEach(text => {
+                    if (this.theme === 'dark') {
+                        text.textContent = 'Light Mode';
+                    } else {
+                        text.textContent = 'Dark Mode';
                     }
-                } else {
-                    if (themeIcon) {
-                        themeIcon.classList.remove('fa-sun');
-                        themeIcon.classList.add('fa-moon');
-                    }
-                    if (themeText) {
-                        themeText.textContent = 'Dark Mode';
-                    }
-                }
+                });
             }
         }
         
@@ -1030,7 +1154,13 @@
                 });
             }, observerOptions);
 
+            // Observe all fade-in elements
             document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe skill items for staggered animation
+            document.querySelectorAll('.skill-item').forEach(el => {
                 observer.observe(el);
             });
 
@@ -1048,7 +1178,7 @@
                         entry.target.style.width = '0%';
                         setTimeout(() => {
                             entry.target.style.width = width;
-                        }, 200);
+                        }, 500);
                         observer.unobserve(entry.target);
                     }
                 });
